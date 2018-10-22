@@ -1,0 +1,15 @@
+version: '3'
+services: #Mao ni ang ipang insall na container pag run.
+  app: #name rani sa service(container gud)
+    container_name: docker-node-mongo
+    restart: always # kung ma fail daw iya ra e restart
+    build: . #pangitaon niya ang 'dockerfile' sa same directory para ang dockerfile mo build sa image
+    ports:
+      - '80:3000'
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
